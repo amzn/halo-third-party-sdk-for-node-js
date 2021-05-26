@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir" : "dist",
+    "sourceMap" : true,
+    "alwaysStrict" : true,
+    "declaration" : true,
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}
