@@ -1,0 +1,9 @@
+coverage/
+doc/
+lib/
+node_modules/
+tst/
+package-lock.json
+tsconfig.json
+.eslintrc.json
+.DS_Store
