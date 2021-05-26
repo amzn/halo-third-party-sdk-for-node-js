@@ -1,0 +1,1 @@
+Halo Third Party SDK Model package contains the type definition for Halo Third Party Software Development Kit (SDK) for Node.js. Please refer to the [main SDK repository](https://github.com/amzn/halo-third-party-sdk-for-node-js) for guidance on getting started with the SDK for Node.js.
