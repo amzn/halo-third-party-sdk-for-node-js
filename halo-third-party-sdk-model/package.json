@@ -1,0 +1,25 @@
+{
+  "name": "halo-third-party-sdk-model",
+  "version": "1.0.2",
+  "description": "Model package for Halo Third Party SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "compile": "tsc",
+    "clean": "rm -rf dist && rm -rf build",
+    "release": "npm run build"
+  },
+  "author": "Amazon.com",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Halo",
+    "SDK"
+  ],
+  "devDependencies": {
+    "@types/node": "^9.6.1",
+    "typescript": "^3.5.3"
+  },
+  "bugs": "https://github.com/amzn/halo-third-party-sdk-for-node-js/issues",
+  "homepage": "https://github.com/amzn/halo-third-party-sdk-for-node-js"
+}
