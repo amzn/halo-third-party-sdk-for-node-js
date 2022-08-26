@@ -19,7 +19,7 @@ export const DataProvider = {
     requestHeader(): IncomingHttpHeaders {
         return {
             'content-type': null,
-            'signaturesha256': null,
+            'signature': null,
             'signaturecertchainurl': null,
         };
     },

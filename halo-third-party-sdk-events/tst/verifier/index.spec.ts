@@ -81,19 +81,20 @@ describe('TimestampVerifier', () => {
 
 describe('EventSignatureVerifier', () => {
     const verifier: Verifier = new EventSignatureVerifier();
-    const signatureKey: string = 'signaturesha256';
+    const signatureKey: string = 'signature';
     const urlKey: string = 'signaturecertchainurl';
-    const testUrl: string = 'https://s3.amazonaws.com/healthtech.api/healthtech-api-cert-v000005.pem';
+    const testUrl: string = 'https://s3.amazonaws.com/healthtech.api/healthtech-api-cert-v000006.pem';
     const certUrl = url.parse(testUrl);
-    const validPem: string = fs.readFileSync(`${__dirname }/../mocks/healthtech-api-cert-v000005.pem`).toString();
+    const validPem: string = fs.readFileSync(`${__dirname }/../mocks/healthtech-api-cert-v000006.pem`).toString();
     const leafPem: string = validPem.slice(validPem.indexOf('-----BEGIN CERTIFICATE-----'), validPem.indexOf('-----END CERTIFICATE-----') + 25);
     const lastPem: string = validPem.slice(validPem.lastIndexOf('-----BEGIN CERTIFICATE-----'), validPem.lastIndexOf('-----END CERTIFICATE-----') + 25);
-    const validSignature = 'NG63tUC0KoC8mvvg7ZxMD1xhEx/S3B5nfbNXD5eWZ61'
-    + 'iloSBh7bfSB3bEn8spm7XLc+ZhcSBsgu98uKoCOhy82imBXMs2OHM+sZ1RULHfFKH'
-    + 'kgBfsSOi76gT/61XDcBwOno3ej9v8l9VkS/tQQBj9acFx4vNkvRBbImC31WfV5OxQk'
-    + '77x3lAQnZlgLSzTNcogdENoGXJ0rEpigyQgD0JASAtJ/edE7XcdE9+K45EaZ5RiCYdV'
-    + '+YJILRycbQxi1PL08cdkL9GoQtb3afuyPOGrwqTcbdnkI3NuaSalj3w1xxv9D7ctCr+V'
-    + 'W0O/jOWpYg+rvdZTxcfJLndiq2ybGekCg==';
+    const validSignature = 'lR0CeNFG36/EvroTfKWljeC2M78EO9zLbz'
+    + '/mDtFfPcxQ4One2V5rOwA+9Pn14LvRlhhAkbbtQYKMEPstpyIXrHAW0Rg'
+    + 'GNc1RO2QlnaTz6MQgD3PFpYt1lwM7imCMBZCzPnRn49x2BPnu+eeh9QUb6'
+    + 'dZK4dJRTEgs3d6KRdLJ7Q43a27TuQyoBOGDCFSaj65mN2QzwTi+FugDE8sL'
+    + 'vx2IyjMB/WftxgR+w4ZYFh6lowSdDhWb2S/jc5f1xAN0BPwyWeXk0V9ZblQz9'
+    + 'hDadNxTvGFu9QBqRdKnX1VnTgJESLfSuTxnR7+6CyKtXmgAW9o60Kr8QIPU+F2'
+    + 'Wb5Jo6y3SbA==';
     const invalidSignature = 'TEST_INVALID_SIGNATURE';
 
     before(function() {
@@ -104,7 +105,7 @@ describe('EventSignatureVerifier', () => {
     });
 
     beforeEach(() => {
-        sinon.useFakeTimers(new Date(2021, 4, 18));
+        sinon.useFakeTimers(new Date(2022, 4, 28));
     });
 
     afterEach(() => {
@@ -180,7 +181,7 @@ describe('EventSignatureVerifier', () => {
         it('should not throw error when header keys are in camel case', async () => {
             const validRequestBody: string = fs.readFileSync(`${__dirname }/../mocks/requestEnvelope.json`).toString();
             const requestHeader: IncomingHttpHeaders = DataProvider.requestHeader();
-            const signatureKeyInCamel = 'SignatureSha256';
+            const signatureKeyInCamel = 'Signature';
             const urlKeyInCamel = 'SignatureCertChainUrl';
             requestHeader[signatureKeyInCamel] = validSignature;
             requestHeader[urlKeyInCamel] = testUrl;
@@ -460,7 +461,7 @@ describe('EventSignatureVerifier', () => {
         });
 
         it('should throw error when cert chain is not valid', () => {
-            sinon.useFakeTimers(new Date(2021, 4, 17));
+            sinon.useFakeTimers(new Date(2022, 4, 27));
             try {
 
                 verifier[functionKey](leafPem + lastPem);
@@ -475,7 +476,7 @@ describe('EventSignatureVerifier', () => {
         });
 
         it('should throw error when certificate chain is not trusted against CA store', () => {
-            sinon.useFakeTimers(new Date(2021, 4, 17));
+            sinon.useFakeTimers(new Date(2022, 4, 27));
             sinon.stub(helper, 'generateCAStore').returns(pki.createCaStore([leafPem]));
             try {
 
@@ -515,14 +516,6 @@ describe('EventSignatureVerifier', () => {
                 return;
             }
             throw new Error('should have thrown an error!');
-        });
-
-        it('should not throw error when signature and body match', () => {
-            try {
-                verifier[functionKey](validPem, validSignature, validRequestBody);
-            } catch (err) {
-                expect.fail('should not throw error');
-            }
         });
     });
 });
