@@ -4,6 +4,10 @@ Halo Third Party SDK Events package is an extension package that will let develo
 
 The Halo Third Party SDK for Node.js makes it easier for you to verify events and allows you to spend more time on implementing features and less on writing boiler-plate code.
 
+Difference between 2.x and 1.x versions
+-------------------------
+Message validation was changed as a part of a security campaign.
+
 ## Installing
 From within your NPM project, run the following commands in the terminal to install them:
 

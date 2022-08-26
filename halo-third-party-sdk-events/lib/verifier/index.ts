@@ -13,6 +13,7 @@
 
 import { RequestEnvelope } from 'halo-third-party-sdk-model';
 import crypto = require ('crypto');
+const { constants } = require ('crypto');
 import { IncomingHttpHeaders } from 'http';
 import * as client from 'https';
 import { pki } from 'node-forge';
@@ -30,7 +31,7 @@ const VALID_SIGNING_CERT_CHAIN_PROTOCOL: string = 'https:';
 const VALID_SIGNING_CERT_CHAIN_URL_HOST_NAME: string = 's3.amazonaws.com';
 const VALID_SIGNING_CERT_CHAIN_URL_PATH_PREFIXES: string[] = ["/healthtech.api/", "/healthtech.api-alpha/", "/healthtech.api-beta/"];
 const SIGNATURE_CERT_CHAIN_URL_HEADER: string = 'SignatureCertChainUrl';
-const SIGNATURE_HEADER: string = 'SignatureSha256';
+const SIGNATURE_HEADER: string = 'Signature';
 const SIGNATURE_FORMAT: crypto.HexBase64Latin1Encoding = 'base64';
 const CERT_CHAIN_URL_PORT: number = 443;
 const CERT_CHAIN_DOMAIN_NAMES = [
@@ -304,8 +305,14 @@ export class EventSignatureVerifier implements Verifier {
 
         const verifier = crypto.createVerify('RSA-SHA256');
         verifier.update(requestEnvelope, CHARACTER_ENCODING);
+        const result: boolean = verifier.verify(
+            {
+                key: pemCert,
+                padding: constants.RSA_PKCS1_PSS_PADDING,
+                saltLength: constants.RSA_PSS_SALTLEN_DIGEST,
+            }, signature, SIGNATURE_FORMAT);
 
-        if (!verifier.verify(pemCert, signature, SIGNATURE_FORMAT)) {
+        if (!result) {
             throw new Error('request body and signature do not match');
         }
     }
