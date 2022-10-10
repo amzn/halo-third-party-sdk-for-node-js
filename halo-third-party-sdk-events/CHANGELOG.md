@@ -6,6 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [2.0.0]
 ### Breaking Change
 * Message validation was changed as a part of a security campaign.
+* Typescript version was updated to 4.x
 
 ## [1.0.2]
 ### Features
