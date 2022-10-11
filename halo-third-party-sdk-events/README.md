@@ -6,7 +6,8 @@ The Halo Third Party SDK for Node.js makes it easier for you to verify events an
 
 Difference between 2.x and 1.x versions
 -------------------------
-Message validation was changed as a part of a security campaign.
+- Message validation was changed as a part of a security campaign.
+- Typescript version was upgraded from 3.x to 4.x.
 
 ## Installing
 From within your NPM project, run the following commands in the terminal to install them:
@@ -20,7 +21,7 @@ The Halo Third Party SDK Events package for Node.js bundles TypeScript definitio
 
 ### Pre-requisites
 Before you can begin using these TypeScript definitions with your project, you need to make sure your project meets a few of these requirements:
-- Use TypeScript v3.x
+- Use TypeScript v4.x
 - Include the TypeScript definitions for node. You can use npm to install this by typing the following into a terminal window:
 
 ```
