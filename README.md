@@ -12,7 +12,7 @@ The **Halo Third Party SDK for Node.js** makes it easier for you to integrate wi
 | Package       | NPM           |
 | ------------- | ------------- |
 |[halo-third-party-sdk-events](https://github.com/amzn/halo-third-party-sdk-for-node-js/tree/2.x/halo-third-party-sdk-events)| [![npm](https://img.shields.io/badge/npm-v2.0.0-green)](https://www.npmjs.com/package/halo-third-party-sdk-events)
-|[halo-third-party-sdk-model](https://github.com/amzn/halo-third-party-sdk-for-node-js/tree/2.x/halo-third-party-sdk-model)| [![npm](https://img.shields.io/badge/npm-v1.0.2-blue)](https://www.npmjs.com/package/halo-third-party-sdk-model)
+|[halo-third-party-sdk-model](https://github.com/amzn/halo-third-party-sdk-for-node-js/tree/2.x/halo-third-party-sdk-model)| [![npm](https://img.shields.io/badge/npm-v1.1.0-blue)](https://www.npmjs.com/package/halo-third-party-sdk-model)
 
 
 
