@@ -22,6 +22,7 @@
    * An array of activity sessions completed by the user on the given day.
    */
   'sessions'?: Array<ActivitySession>;
+  'summary'?: ActivitySummary;
 }
 
 /**
@@ -60,6 +61,61 @@ export interface ActivitySession {
    */
   'timestamp'?: string;
   'calorieInfo'?: CalorieInfo;
+  'duration'?: ActivitySessionDuration;
+}
+
+/**
+* An object containing the user's light/moderate/intense activity durations during the workout session.
+* @interface
+*/
+export interface ActivitySessionDuration {
+  /**
+   * Amount (in seconds) of intense activity completed during the session.
+   */
+  'intenseActivity'?: number;
+  /**
+   * Amount (in seconds) of moderate activity completed during the session.
+   */
+  'moderateActivity'?: number;
+  /**
+   * Amount (in seconds) of light activity completed during the session.
+   */
+  'lightActivity'?: number;
+}
+
+/**
+* An object containing daily activity summary information.
+* @interface
+*/
+export interface ActivitySummary {
+  /**
+   * The timestamp for when the activity summary was last computed in extended ISO 8601 date/time format (yyyy-mm-ddThh:mm:ss.mmmZ).
+   */
+  'timestamp'?: string;
+  'duration'?: ActivitySummaryDuration;
+}
+
+/**
+* An object containing the user's various activity durations per day.
+* @interface
+*/
+export interface ActivitySummaryDuration {
+  /**
+   * Daily total intense activity duration in seconds.
+   */
+  'intenseActivity'?: number;
+  /**
+   * Daily total moderate activity duration in seconds.
+   */
+  'moderateActivity'?: number;
+  /**
+   * Daily total light activity duration in seconds.
+   */
+  'lightActivity'?: number;
+  /**
+   * Daily total sedentary duration in seconds.
+   */
+  'sedentary'?: number;
 }
 
 /**
@@ -230,7 +286,7 @@ export interface RequestEnvelope {
    */
   'timestamp': string;
   /**
-   * The notification type, which can have values 'HEALTH_METRIC', 'HEALTH_METRIC_TEST', or 'DEAUTHORIZATION'.
+   * The notification type, which can have values 'HEALTH_METRIC', 'HEALTH_METRIC_TEST', 'DEAUTHORIZATION', 'HEALTH_METRIC_DELETION', or 'HEALTH_METRIC_DELETION_TEST'.
    */
   'type': string;
   'data': Data;
@@ -263,6 +319,14 @@ export interface Sleep {
    * A boolean flag denoting if this sleep session information was modified by the user.
    */
   'modified'?: boolean;
+  /**
+   * The date and time the session started, encoded in ISO8601 date/time format (yyyy-mm-ddThh:mm:ss.mmmZ).
+   */
+  'sessionStartTime'?: string;
+  /**
+   * The date and time the session ended, encoded in ISO8601 date/time format (yyyy-mm-ddThh:mm:ss.mmmZ).
+   */
+  'sessionEndTime'?: string;
 }
 
 /**
