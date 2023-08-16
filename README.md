@@ -1,3 +1,10 @@
+# ![image](https://user-images.githubusercontent.com/56273942/202568467-0ee721bb-1424-4efd-88fc-31b4f2a59dc6.png) DEPRECATED
+
+## Announcement:
+As of July 31, 2023, this repository is deprecated. The contents of this repository will remain available but we will no longer provide updates or accept new contributions and pull requests.
+
+https://www.aboutamazon.com/news/company-news/amazon-halo-discontinued
+
 <p align="center">
   <img src="https://play-lh.googleusercontent.com/yPeovJFdz6PQQlqLBoUSQ_Y48hZaTxpDse37aqV_6DiiQ83OhacJiThfZlEXDqJTqA=s180-rw">
   <br/>
